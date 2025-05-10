@@ -1,0 +1,96 @@
+<div class="container mt-3">
+  <form class="row g-3 needs-validation" (ngSubmit)="method(userdata.value)" #userdata="ngForm">
+    <div class="col-md-4">
+      <label class="form-label">Creditcard Number<span style="color: red;">*</span></label>
+      <input type="number" name="creditcardnum" class="form-control" ngModel required minlength="16" maxlength="19"
+        pattern="^[0-9]+$" #creditcardnum="ngModel">
+      <p style="color:red"
+        *ngIf="userdata.controls['creditcardnum']?.touched && userdata.controls['creditcardnum']?.hasError('required')">
+        &nbsp;Field is required</p>
+      <p style="color:red"
+        *ngIf="userdata.controls['creditcardnum']?.touched && userdata.controls['creditcardnum']?.hasError('maxlength')">
+        &nbsp;Max 19 characters are allowed</p>
+      <p style="color:red"
+        *ngIf="userdata.controls['creditcardnum']?.touched && userdata.controls['creditcardnum']?.hasError('minlength')">
+        &nbsp;Min 16 characters are expected</p>
+      <p style="color:red"
+        *ngIf="userdata.controls['creditcardnum']?.touched && userdata.controls['creditcardnum']?.hasError('pattern')">
+        &nbsp;Alphabets and spaces are not-allowed</p>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom01" class="form-label">Cardname<span style="color: red;">*</span></label>
+      <input type="text" name="Cardname" class="form-control" value="Mark" ngModel placeholder="Enter creditcard name"
+        required minlength="3" maxlength="20" pattern="[a-zA-Z ]*" #Cardname="ngModel">
+      <p style="color:red"
+        *ngIf="userdata.controls['Cardname']?.touched && userdata.controls['Cardname']?.hasError('required')">
+        &nbsp;Field is required</p>
+      <p style="color:red"
+        *ngIf="userdata.controls['Cardname']?.touched && userdata.controls['Cardname']?.hasError('minlength')">&nbsp;Min
+        3 characters are expected</p>
+      <p style="color:red"
+        *ngIf="userdata.controls['Cardname']?.touched && userdata.controls['Cardname']?.hasError('pattern')">&nbsp;Only
+        alphabets and spaces are allowed</p>
+
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Bankname<span style="color: red;">*</span></label>
+      <input type="text" name="Bankname" class="form-control" value="ABC" required placeholder="Enter bank name"
+        minlength="3" ngModel #Bankname="ngModel">
+      <p style="color:red"
+        *ngIf="userdata.controls['Bankname']?.touched && userdata.controls['Bankname']?.hasError('required')">
+        &nbsp;Field is required</p>
+      <p style="color:red"
+        *ngIf="userdata.controls['Bankname']?.touched && userdata.controls['Bankname']?.hasError('minlength')">&nbsp;Min
+        3 characters are expected</p>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Maxcredit<span style="color: red;">*</span></label>
+      <input type="text" name="Maxcredit" class="form-control" name="Maxcredit" required placeholder="1000-100000"
+        minlength="4" maxlength="6" ngModel #Maxcredit="ngModel">
+      <p style="color:red"
+        *ngIf="userdata.controls['Maxcredit']?.touched && userdata.controls['Maxcredit']?.hasError('required')">
+        &nbsp;Field is required&nbsp;</p>
+      <p style="color:red"
+        *ngIf="userdata.controls['Maxcredit']?.touched && userdata.controls['Maxcredit']?.hasError('minlength')">
+        &nbsp;Min 4 characters are expected</p>
+      <p style="color:red"
+        *ngIf="userdata.controls['Maxcredit']?.touched && userdata.controls['Maxcredit']?.hasError('maxlength')"></p>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">IntrestRate<span style="color: red;">*</span></label>
+      <input type="text" name="intrestRate" class="form-control" id="validationCustom03" placeholder="%" ngModel
+        required maxlength="5" pattern="^(100|[0-9]{1,2})(\.[0-9]{1,2})?$" #intrestRate="ngModel">
+      <p style="color:red"
+        *ngIf="userdata.controls['intrestRate']?.touched && userdata.controls['intrestRate']?.hasError('required')">
+        &nbsp;Field is required</p>
+      <p style="color:red"
+        *ngIf="userdata.controls['intrestRate']?.touched && userdata.controls['intrestRate']?.hasError('maxlength')">
+        &nbsp;Max 5 characters are allowed</p>
+      <p style="color:red"
+        *ngIf="userdata.controls['intrestRate']?.touched && userdata.controls['intrestRate']?.hasError('pattern')">
+        &nbsp;Alphabets and spaces are not-allowed</p>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">recomendedCreditScore<span style="color: red;">*</span></label>
+      <input type="text" name="recomendedCreditScore" class="form-control" id="validationCustom05" ngModel required
+        minlength="3" maxlength="3" #recomendedCreditScore="ngModel">
+      <p style="color:red"
+        *ngIf="userdata.controls['recomendedCreditScore']?.touched && userdata.controls['recomendedCreditScore']?.hasError('minlength')">
+        &nbsp;Min 3 characters are expected</p>
+      <p style="color:red"
+        *ngIf="userdata.controls['recomendedCreditScore']?.touched && userdata.controls['recomendedCreditScore']?.hasError('maxlength')">
+        &nbsp;Max 3 characters are allowed</p>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Active</label>
+      <select class="form-select" name="Active" ngModel required #Active="ngModel">
+        <option selected disabled value="">Choose...</option>
+        <option>true</option>
+        <option>false</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit" name="Submit" [disabled]="!userdata.valid">Submit form</button>
+    </div>
+  </form>
+</div>

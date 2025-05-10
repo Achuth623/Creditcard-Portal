@@ -1,0 +1,62 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+.example-spacer {
+  flex: 1 1 auto;
+}
+.mat-class {
+  margin: 20px;
+  border-radius: 10px;
+}
+.mat-card {
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+}
+.adjtable {
+  height: auto;
+  width: 100%;
+  /* min-width:100vh; */
+  text-align: center;
+}
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.ctainer {
+  margin-top: 10px;
+  text-align: center;
+}
+.bg-success1 {
+  background: linear-gradient(45deg, rgb(223, 234, 94), rgb(39, 186, 28));
+  border: none;
+  transition: background 0.3s ease-in-out;
+}
+.bg-warning1 {
+  background: linear-gradient(45deg, lightcoral, rgb(156, 19, 19));
+  border: none;
+  transition: background 0.3s ease-in-out;
+}
+.bg-info {
+  background: linear-gradient(45deg, lightblue, rgb(25, 98, 176));
+  border: none;
+  transition: background 0.3s ease-in-out;
+}
+.bg-failure1 {
+  background: linear-gradient(45deg, rgb(244, 244, 190), rgb(180, 180, 43));
+  border: none;
+  transition: background 0.3s ease-in-out;
+}
+table {
+  width: 100%;
+}
+.selected-row {
+  background-color: rgb(237, 236, 236);
+}
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}

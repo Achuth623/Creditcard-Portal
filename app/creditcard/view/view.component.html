@@ -1,0 +1,44 @@
+<div class="col-md-12">
+  <div class="d-flex flex-row justify-content-left">
+    <div class="flex-row">
+      <label class="form-label">Enter Id</label>
+      <input type="number" name="id" class="form-control" (input)="selectedId">
+    </div>
+    <div class="flex-row">
+      <button class="btn btn-success mt-4" (click)="getSelectedData(selectedId)" name="submit">Search</button>
+    </div>
+  </div>
+</div>
+<div class="container mt-3">
+  <form class="row g-3 needs-validation" #viewdata="ngForm">
+    <div class="col-md-4">
+      <label class="form-label">Creditcard Number</label>
+      <input type="number" name="creditcardnum" class="form-control" readonly ngModel #creditcardnum="ngModel">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Cardname</label>
+      <input type="text" name="Cardname" class="form-control" readonly ngModel #Cardname="ngModel">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Bankname</label>
+      <input type="text" name="Bankname" class="form-control" readonly ngModel #Bankname="ngModel">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Maxcredit</label>
+      <input type="number" name="Maxcredit" class="form-control" readonly ngModel #Maxcredit="ngModel">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">IntrestRate</label>
+      <input type="number" name="intrestRate" class="form-control" readonly ngModel #intrestRate="ngModel">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">recomendedCreditScore</label>
+      <input type="number" name="recomendedCreditScore" class="form-control" readonly ngModel
+        #recomendedCreditScore="ngModel">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Active</label>
+      <input type="text" name="Active" class="form-control" readonly ngModel #Active="ngModel">
+    </div>
+  </form>
+</div>

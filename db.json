@@ -1,0 +1,44 @@
+{
+  "creditcards": [
+    {
+      "id": "1",
+      "creditcardnum": 5467348732907837,
+      "Cardname": "Cashback Plus ",
+      "Bankname": "XYZ Bank",
+      "Maxcredit": 5000,
+      "intrestRate": "5",
+      "recomendedCreditScore": "777",
+      "Active": "false"
+    },
+    {
+      "id": "3",
+      "creditcardnum": 4734672849800357,
+      "Cardname": "Silver Rewards",
+      "Bankname": "PrimeBank",
+      "Maxcredit": 8000,
+      "intrestRate": 20,
+      "recomendedCreditScore": "722",
+      "Active": true
+    },
+    {
+      "id": "5",
+      "creditcardnum": 5467348732907837,
+      "Cardname": "Cashback Plus ",
+      "Bankname": "XYZ Bank",
+      "Maxcredit": 5000,
+      "intrestRate": "5",
+      "recomendedCreditScore": "777",
+      "Active": "false"
+    },
+    {
+      "id": "6",
+      "creditcardnum": 5467348732907837,
+      "Cardname": "Luxury Platinum",
+      "Bankname": "GlobalBank",
+      "Maxcredit": 100000,
+      "Active": true,
+      "intrestRate": 14,
+      "recomendedCreditScore": 800
+    }
+  ]
+}

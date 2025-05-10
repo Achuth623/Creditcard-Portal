@@ -1,0 +1,59 @@
+<div class="container mt-3">
+    <form class="row g-3 " [formGroup]="editCredutCardForm" (ngSubmit)="onSubmit()" >
+      <div class="col-md-4">
+        <label class="form-label">Creditcard Number<span style="color: red;">*</span></label>
+        <input type="number" name="creditcardnum" class="form-control" value="creditcardnum" formControlName="creditcardnum" >
+        <p style="color:red" *ngIf="editCredutCardForm.get('creditcardnum')?.errors?.['required']">&nbsp;Creditcard Number is required</p>
+        <p style="color:red" *ngIf="editCredutCardForm.get('creditcardnum')?.errors?.['minlength']">&nbsp;Creditcard Number must be at least 3 characters</p>
+        <p style="color:red" *ngIf="editCredutCardForm.get('creditcardnum')?.errors?.['maxlength']">&nbsp;Creditcard Number should not be morethan 19 characters</p>
+        <p style="color:red" *ngIf="editCredutCardForm.get('creditcardnum')?.errors?.['pattern']">&nbsp;Enter a valid Creditcard Number</p>    
+      </div>
+        <div class="col-md-4">
+          <label class="form-label">Cardname<span style="color: red;">*</span></label>
+          <input type="text" name="Cardname" class="form-control" value="Cardname" formControlName="Cardname" placeholder="Enter creditcard name"  >
+          <p style="color:red" *ngIf="editCredutCardForm.get('Cardname')?.errors?.['required']">&nbsp;Cardname is required</p>
+          <p style="color:red" *ngIf="editCredutCardForm.get('Cardname')?.errors?.['minlength']">&nbsp;Cardname must be at least 3 characters</p>
+          <p style="color:red" *ngIf="editCredutCardForm.get('Cardname')?.errors?.['pattern']">&nbsp;Enter a valid Cardname</p>    
+        </div>
+        <div class="col-md-4">
+          <label  class="form-label">Bankname<span style="color: red;">*</span></label>
+          <input type="text" name="Bankname" class="form-control"  value="ABC" name="Bankname" formControlName="Bankname" placeholder="Enter bank name" >
+          <p style="color:red" *ngIf="editCredutCardForm.get('Bankname')?.errors?.['Bankname']">&nbsp;Bankname is required</p>
+          <p style="color:red" *ngIf="editCredutCardForm.get('Bankname')?.errors?.['pattern']">&nbsp;Enter a valid Bankname</p>    
+
+        </div>
+        <div class="col-md-4">
+          <label  class="form-label">Maxcredit<span style="color: red;">*</span></label>
+          <input type="text" name="Maxcredit" class="form-control"  name="Maxcredit" placeholder="1000-100000" minlength="4" maxlength="6" formControlName="Maxcredit">
+          <p style="color:red" *ngIf="editCredutCardForm.get('Maxcredit')?.errors?.['Maxcredit']">&nbsp;Maxcredit is required</p>
+          <p style="color:red" *ngIf="editCredutCardForm.get('Mincredit')?.errors?.['Mincredit']">&nbsp;Min 4 characters are expected</p>
+        </div>
+        <div class="col-md-4">
+          <label  class="form-label">IntrestRate<span style="color: red;">*</span></label>
+          <input type="text" name="intrestRate" class="form-control"  placeholder="%"  formControlName="intrestRate">
+          <p style="color:red" *ngIf="editCredutCardForm.get('intrestRate')?.errors?.['required']">&nbsp;Interest rate is required</p>
+          <p style="color:red" *ngIf="editCredutCardForm.get('intrestRate')?.errors?.['pattern']">&nbsp;Enter a valid percentage</p>    
+        </div>
+        <div class="col-md-4">
+          <label for="validationCustom05" class="form-label">recomendedCreditScore<span style="color: red;">*</span></label>
+          <input type="text" name="recomendedCreditScore" class="form-control"  formControlName="recomendedCreditScore" >
+          <p style="color:red" *ngIf="editCredutCardForm.get('recomendedCreditScore')?.touched && editCredutCardForm.get('recomendedCreditScore')?.invalid">&nbsp;Enter a valid creditscore</p>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Active</label>
+            <select class="form-select" name="Active" formControlName="Active">
+              <option selected disabled value="">Choose...</option>
+              <option>true</option>
+              <option>false</option>
+            </select>
+            <p style="color:red" *ngIf="editCredutCardForm.get('Active')?.errors?.['required']">&nbsp;Interest rate is required</p>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit" name="Submit" [disabled]="!editCredutCardForm.valid">Save</button>
+        </div>
+      </form>
+    </div>
+    
+    
+    
+    

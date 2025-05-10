@@ -1,0 +1,65 @@
+<div class="parent">
+  <div class="container">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form action="#">
+        <div class="input-box">
+          <input type="email" name="username" required />
+          <label>Username</label>
+        </div>
+        <div class="input-box">
+          <input type="password" name="password" required />
+          <label>Password</label>
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-primary btn-block"
+          (click)="onLogin()"
+        >
+          Login
+        </button>
+        <div id="buttonDiv"></div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- <div class="login-container">
+  <div class="image-container">
+    <div class="image-overlay">
+      <h1>Welcome Back!</h1>
+    </div>
+  </div>
+  <div class="form-container">
+    <form (ngSubmit)="onLogin()">
+      <h2 class="text-center">Login</h2>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          [(ngModel)]="loginObj.username"
+          name="username"
+          placeholder="Enter your username"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          [(ngModel)]="loginObj.Password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block mt-3">
+        Login
+      </button>
+    </form>
+  </div>
+</div> -->

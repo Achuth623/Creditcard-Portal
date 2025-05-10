@@ -1,0 +1,179 @@
+<div class="mat-card" style="display: flex; flex-direction: row">
+  <mat-card class="mat-class mat-card bg-success1" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Num of Cards</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>{{ creditcards.length }}</mat-card-content>
+  </mat-card>
+  <mat-card class="mat-class mat-card bg-warning1" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Cards with MaxAmount</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>{{ creditcardMaxAmount }}</mat-card-content>
+  </mat-card>
+  <mat-card class="mat-class mat-card bg-info" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Num of Active Cards</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>{{ InActive }}</mat-card-content>
+  </mat-card>
+  <mat-card class="mat-class mat-card bg-failure1" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Healthy creditscore</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>{{ recomendedCreditScore }}</mat-card-content>
+  </mat-card>
+</div>
+<div class="mat-elevation-z8 adjtable mat-card">
+  <div class="row form-floating mb-2" style="padding-top: 8px">
+    <div class="col-md-6">
+      <input type="Filter" class="form-control" (keyup)="applyFilter($event)" placeholder="Filter" #input
+        style="border: 1px solid rgb(146, 144, 144)" id="floatingInput" />
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-danger" (click)="deletemultiplecards()" [disabled]="selection.isEmpty()"
+        style="border-radius: 10px">
+        Delete selected cards
+      </button>
+    </div>
+  </div>
+  <table mat-table [dataSource]="creditcards" class="mat-elevation-z8">
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? toggleAllRows() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="creditcardnum">
+      <th mat-header-cell *matHeaderCellDef>Creditcard Number</th>
+      <td mat-cell *matCellDef="let element">{{ element.creditcardnum }}</td>
+    </ng-container>
+    <ng-container matColumnDef="Cardname">
+      <th mat-header-cell *matHeaderCellDef>Cardname</th>
+      <td mat-cell *matCellDef="let element">{{ element.Cardname }}</td>
+    </ng-container>
+    <ng-container matColumnDef="Bankname">
+      <th mat-header-cell *matHeaderCellDef>Bankname</th>
+      <td mat-cell *matCellDef="let element">{{ element.Bankname }}</td>
+    </ng-container>
+    <ng-container matColumnDef="Maxcredit">
+      <th mat-header-cell *matHeaderCellDef>Maxcredit</th>
+      <td mat-cell *matCellDef="let element">{{ element.Maxcredit }}</td>
+    </ng-container>
+    <ng-container matColumnDef="Active">
+      <th mat-header-cell *matHeaderCellDef>Active</th>
+      <td mat-cell *matCellDef="let element">{{ element.Active }}</td>
+    </ng-container>
+    <ng-container matColumnDef="intrestRate">
+      <th mat-header-cell *matHeaderCellDef>intrestRate</th>
+      <td mat-cell *matCellDef="let element">{{ element.intrestRate }}</td>
+    </ng-container>
+    <ng-container matColumnDef="recomendedCreditScore">
+      <th mat-header-cell *matHeaderCellDef>recomendedCreditScore</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.recomendedCreditScore }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <a [routerLink]="['view', element.id]"><svg xmlns="http://www.w3.org/2000/svg" height="20" width="22.5"
+            viewBox="0 0 576 512">
+            <!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+          </svg></a>&nbsp;
+        <a (click)="onclick(element.id)"><svg xmlns="http://www.w3.org/2000/svg" height="20" width="17.5"
+            viewBox="0 0 448 512">
+            <!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
+          </svg></a>&nbsp;
+        <a [routerLink]="['edit', element.id]"><svg xmlns="http://www.w3.org/2000/svg" height="20" width="20"
+            viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z" />
+          </svg>
+        </a>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="datacolumns"></tr>
+    <!-- <tr *ngIf="selectedCard != null"></tr> -->
+    <tr mat-row (click)="showdetails(row)" [class.selected-row]="row === selectedCard"
+      *matRowDef="let row; columns: datacolumns"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+  <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+  </mat-paginator>
+  @if (selectedCard != null) {
+  <div>Clicked rows will be logged here</div>
+  <div class="card mt-3" style="
+      width: 18rem;
+      margin-left: 30px;
+      border: 2px solid black;
+      background-color: lightgoldenrodyellow;
+    ">
+    <div class="card-body" style="text-align: justify">
+      <h3 class="card-title">
+        {{ selectedCard.id }}.&nbsp;{{ selectedCard.Bankname }}
+      </h3>
+      <h5 class="card-subtitle mb-2 text-body-secondary">
+        {{ selectedCard.Cardname }}
+      </h5>
+      <p class="card-text">Maxcredit-{{ selectedCard.Maxcredit }}</p>
+      <p class="card-text">IntrestRate-{{ selectedCard.intrestRate }}</p>
+      <p class="card-text">
+        RecomendedCreditScore-{{ selectedCard.recomendedCreditScore }}
+      </p>
+    </div>
+  </div>
+  }
+</div>
+<!-- <div *ngFor="let cred of creditcards">
+  <p>{{ cred.Cardname }}</p>
+</div> -->
+<!-- <button class="btn btn-secondary" (click)="stopPropagation(creditcardID)">
+  Delete
+</button> -->
+
+<!-- <div class="modal fade" id="editmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div> -->
